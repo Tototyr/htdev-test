@@ -1,0 +1,23 @@
+@use '../../sass/mixins';
+@use '../../sass/variables';
+
+.btn {
+  display: inline-flex;
+  padding: 10px 20px;
+
+  color: variables.$color-default-white;
+
+  border: none;
+  cursor: pointer;
+
+
+  &:disabled {
+    opacity: 0.5;
+
+    pointer-events: none;
+  }
+
+  @include hover-focus {
+    opacity: 0;
+  }
+}

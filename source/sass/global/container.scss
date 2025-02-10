@@ -1,0 +1,22 @@
+.container {
+  max-width: 1250px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: content-box;
+  position: relative;
+  overflow-x: clip;
+
+  @media (max-width: 960px) {
+    width: 930px;
+  }
+
+  @media (max-width: 640px) {
+    width: 610px;
+  }
+
+  @media (max-width: 320px) {
+    width: 100%;
+    max-width: 290px;
+  }
+
+}

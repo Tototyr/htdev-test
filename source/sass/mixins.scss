@@ -1,0 +1,84 @@
+@mixin retina {
+  @media (min-resolution: $retina-dpi), (min-resolution: $retina-dppx) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover:not(.focus-visible) {
+      @content;
+    }
+  }
+}
+
+@mixin focus {
+  &.focus-visible:focus {
+    @content;
+  }
+}
+
+@mixin active {
+  &.focus-visible:active {
+    @content;
+  }
+}
+
+@mixin hover-focus {
+  @media (hover: hover) {
+    &:hover:not(.focus-visible) {
+      @content;
+    }
+  }
+
+  &.focus-visible:focus {
+    @content;
+  }
+}
+
+
+@mixin font($size, $weight: normal, $line-height: normal, $family) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+  font-family: $family, sans-serif;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == 'xs' {
+    @media (min-width: 320px) and (max-width: 639px) {
+      @content;
+    }
+  } @else if $breakpoint == 's' {
+    @media (min-width: 640px) and (max-width: 900px) {
+      @content;
+    }
+  } @else if $breakpoint == 'm' {
+    @media (min-width: 910px) and (max-width: 1249px) {
+      @content;
+    }
+  } @else if $breakpoint == 'l' {
+    @media (min-width: 1250px) {
+      @content;
+    }
+  }
+}
+
+@mixin container() {
+  width: 100%;
+  margin: 0 auto;
+
+  @include respond-to('l') {
+    width: 1250px;
+  }
+  @include respond-to('m') {
+    width: 930px;
+  }
+  @include respond-to('s') {
+    width: 610px;
+  }
+  @include respond-to('xs') {
+    width: 100%;
+    min-width: 300px;
+  }
+}

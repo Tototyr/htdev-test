@@ -1,0 +1,363 @@
+@use "../../sass/variables";
+@use "../../sass/mixins";
+
+
+.mission {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include mixins.respond-to('m') {
+    border-top: 19px solid variables.$color-secondary-accent;
+  }
+
+  &__icon {
+
+    svg {
+      width: 53px;
+      height: 60px;
+
+      @include mixins.respond-to('s') {
+        width: 22px;
+        height: 28px;
+      }
+
+      @include mixins.respond-to('xs') {
+        width: 26px;
+        height: 30px;
+      }
+    }
+
+    @include mixins.respond-to('s') {
+      width: 22px;
+      height: 28px;
+    }
+
+    @include mixins.respond-to('xs') {
+      width: 22px;
+      height: 28px;
+    }
+
+  }
+
+  &__stats {
+    align-items: center;
+    display: flex;
+    padding: 74px 57px;
+    background: variables.$color-primary;
+    max-width: 1250px;
+
+    @include mixins.respond-to('m') {
+      padding: 74px 37px;
+    }
+
+    @include mixins.respond-to('s') {
+      padding: 19px 20px;
+    }
+
+    @include mixins.respond-to('xs') {
+      padding: 32px 13px;
+      display: flex;
+      align-items: normal;
+    }
+
+
+  }
+
+
+  &__title {
+    @include mixins.font(24px, 400, 32px, "Lato-Regular");
+    color: variables.$color-default-white;
+    width: 60%;
+    margin-left: 35px;
+
+
+    @include mixins.respond-to('m') {
+      @include mixins.font(24px, 400, 32px, "Lato-Regular");
+      width: 77%;
+    }
+
+    @include mixins.respond-to('s') {
+      display: block;
+      width: 75%;
+
+      margin-left: 27px;
+
+      @include mixins.font(16px, 400, 20px, "Arial");
+    }
+
+    @include mixins.respond-to('xs') {
+      width: 83%;
+      margin: 0 0 0 8px;
+
+      @include mixins.font(16px, 400, 20px, "Arial");
+    }
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: url("../../img/content/mission/mission_bg-l.png");
+    background-size: cover;
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+
+      @include mixins.respond-to('l') {
+        background: url("../../img/content/mission/mission_bg-l@2x.png");
+        background-size: cover;
+        min-height: 437px;
+      }
+
+      @include mixins.respond-to('m') {
+        background: url("../../img/content/mission/mission_bg-m@2x.png");
+        background-size: cover;
+        min-height: 461px;
+      }
+
+      @include mixins.respond-to('s') {
+        background: url("../../img/content/mission/mission_bg-s@2x.png");
+        background-size: cover;
+        min-height: 275px;
+      }
+
+      @include mixins.respond-to('xs') {
+        background: url("../../img/content/mission/mission_bg-xs@2x.png") no-repeat center center;
+        background-size: cover;
+        min-height: 275px;
+      }
+    }
+  }
+
+  &__text {
+    @include mixins.font(48px, 400, 80px, "Lato-Regular");
+    color: variables.$color-default-white;
+    text-transform: uppercase;
+    position: relative;
+    margin: 81px 0 0 0;
+
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      width: 66px;
+      height: 4px;
+      top: 37px;
+      background-color: variables.$color-default-white;
+    }
+
+    &::before {
+      left: -87px;
+    }
+
+    &::after {
+
+      right: -87px;
+    }
+
+
+    @include mixins.respond-to('m') {
+      margin-top: 85px;
+    }
+
+    @include mixins.respond-to('s') {
+      @include mixins.font(30px, 400, 46px, "Lato-Regular");
+      margin: 55px 0 20px 0;
+
+
+      &::before, &::after {
+        content: "";
+        position: absolute;
+        width: 15px;
+        height: 2px;
+        top: 21px;
+      }
+
+      &::before {
+        left: -28px;
+      }
+
+      &::after {
+        right: -28px;
+      }
+    }
+
+    @include mixins.respond-to('xs') {
+      @include mixins.font(18px, 400, 46px, "Lato-Regular");
+      margin: 27px 0 4px 0;
+
+
+      &::before, &::after {
+        content: "";
+        position: absolute;
+        width: 14px;
+        height: 2px;
+        top: 21px;
+      }
+
+      &::before {
+        left: -30px;
+      }
+
+      &::after {
+        right: -30px;
+      }
+    }
+
+
+  }
+
+  &__content {
+    z-index: 2;
+    display: flex;;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    gap: 40px;
+
+    @include mixins.respond-to('m') {
+      gap: 32px;
+    }
+
+    @include mixins.respond-to('s') {
+      gap: 0;
+    }
+
+    @include mixins.respond-to('xs') {
+      gap: 0;
+    }
+  }
+
+  &__subtext--l {
+    @include mixins.font(24px, 400, 28px, "Arial");
+    color: variables.$color-default-white;
+    text-transform: uppercase;
+    margin: 0 80px 0;
+
+    @include mixins.respond-to('m') {
+      display: none;
+    }
+
+    @include mixins.respond-to('s') {
+      display: none;
+    }
+
+    @include mixins.respond-to('xs') {
+      display: none;
+    }
+  }
+
+  &__subtext {
+
+    @include mixins.font(24px, 400, 28px, "Arial");
+    color: variables.$color-default-white;
+    display: none;
+    text-transform: uppercase;
+    margin: 0;
+    @include mixins.respond-to('m') {
+      display: block;
+      width: 67%;
+      @include mixins.font(24px, 400, 32px, "Arial");
+    }
+
+    @include mixins.respond-to('s') {
+      display: block;
+      width: 67%;
+      @include mixins.font(16px, 400, 20px, "Arial");
+      margin-bottom: 11px;
+    }
+
+    @include mixins.respond-to('xs') {
+      display: block;
+      width: 77%;
+      @include mixins.font(16px, 400, 20px, "Arial");
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+
+  }
+
+  .mission__button {
+    min-width: 283px;
+    padding: 20px 72px;
+    border: none;
+    background: variables.$color-default-white;
+    color: variables.$color-text-secondary;
+    @include mixins.font(18px, 400, 28px, "Arial");
+
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+
+
+    &:hover {
+      background: variables.$color-primary;
+      color: variables.$color-default-white;
+    }
+
+    @include mixins.respond-to('s') {
+      min-width: 171px;
+      padding: 10px 20px;
+      @include mixins.font(14px, 400, 28px, "Arial");
+    }
+
+    @include mixins.respond-to('xs') {
+      min-width: 197px;
+      padding: 13px 20px;
+      @include mixins.font(18px, 400, 22px, "Arial");
+    }
+
+  }
+}
+
+
+.mission__particles {
+  width: 436px;
+  height: 322px;
+
+  position: absolute;
+  top: 4px;
+  right: -3px;
+
+  svg {
+    width: 436px;
+    height: 322px;
+
+    @include mixins.respond-to('s') {
+      width: 179px;
+      height: 132px;
+    }
+    @include mixins.respond-to('xs') {
+      width: 179px;
+      height: 132px;
+    }
+  }
+
+  @include mixins.respond-to('s') {
+    width: 179px;
+    height: 132px;
+    top: -23px;
+    right: -1px;
+  }
+
+  @include mixins.respond-to('xs') {
+    width: 179px;
+    height: 132px;
+    top: 48px;
+    right: -55px;
+  }
+
+  @include mixins.respond-to('m') {
+    top: 20px;
+    right: -284px;
+  }
+}
+
+
+
+

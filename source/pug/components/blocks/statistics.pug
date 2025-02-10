@@ -1,0 +1,59 @@
+- var statisticsData = [ { id: 1, title: "10 700+ сотрудников", image: "team" }, { id: 2, title: "570 экспертов R&D", image: "research" }, { id: 3, titleParts: ["лет опыта", "на рынке хлебопечения"], large: "167", image: "history", highlight: true }, { id: 4, title: "25+ лет в России", image: "field" }, { id: 5, title: "Филиалы в 50 странах", image: "factory" }, { id: 6, titleParts: ["направления", "деятельности"], large: "4", image: "directions", highlight: true } ]
+
+.container
+  section.statistics
+    .statistics__container
+      h1.statistics__title DUFFBEER
+      p.statistics__subtitle Ключевой мировой игрок в области ферментации
+
+      // Swiper slider (Мобильная версия)
+      .statistics__slider.swiper
+        .swiper-wrapper
+          each statistics in statisticsData
+            if statistics.id !== 3 && statistics.id !== 6
+              .swiper-slide
+                .statistics__card
+                  picture
+                    source(type="image/webp" media="(min-width: 320px)" srcset="../../img/content/statistics/" + statistics.image + "-s.webp")
+                    source(type="image/webp" media="(max-width: 1249px)" srcset="../../img/content/statistics/" + statistics.image + "-m.webp")
+                    source(type="image/webp" media="(min-width: 1250px)" srcset="../../img/content/statistics/" + statistics.image + "-l.webp")
+                    img.statistics__image(
+                      src="../../img/content/statistics/" + statistics.image + "-l.png"
+                      srcset="../../img/content/statistics/" + statistics.image + "-l@2x.png 2x, ../../img/content/statistics/" + statistics.image + "-l.png 1x"
+                      alt=statistics.title
+                    )
+                  .statistics__content
+                    p.statistics__text= statistics.title
+
+        .swiper-button-prev-stats.custom-prev
+        .swiper-button-next-stats.custom-next
+        .statistics-pagination
+      .statistics__particles
+        +icon("particles-3")
+
+      // Grid layout (Десктопная версия)
+      .statistics__grid
+        each statistics in statisticsData
+          .statistics__card(class=statistics.highlight ? "statistics__card--highlight" : "")
+            if statistics.id !== 3 && statistics.id !== 6
+              picture
+                source(type="image/webp" media="(max-width: 1249px)" srcset="../../img/content/statistics/" + statistics.image + "-m.webp")
+                source(type="image/webp" media="(min-width: 1250px)" srcset="../../img/content/statistics/" + statistics.image + "-l.webp")
+                img.statistics__image(
+                  src="../../img/content/statistics/" + statistics.image + "-l.png"
+                  srcset="../../img/content/statistics/" + statistics.image + "-l@2x.png 2x, ../../img/content/statistics/" + statistics.image + "-l.png 1x"
+                  alt=statistics.title
+                )
+            .statistics__content
+              if statistics.large
+                p.statistics__text.statistics__text--large= statistics.large
+
+              if statistics.titleParts
+                each part in statistics.titleParts
+                  p.statistics__text= part
+              else
+                p.statistics__text= statistics.title
+        .statistics__particles
+          +icon("particles-3")
+        .statistics__particles-two
+          +icon("particles-4")

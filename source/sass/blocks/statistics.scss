@@ -1,0 +1,476 @@
+@use '../../sass/mixins';
+@use '../../sass/variables';
+
+.statistics {
+  background-color: #fdf6ef;
+  padding: 50px 20px;
+  z-index: 11;
+
+  @include mixins.respond-to('m') {
+    padding: 5px 0;
+  }
+
+  @include mixins.respond-to('s') {
+    padding: 47px 0 67px 0;
+  }
+
+  @include mixins.respond-to('xs') {
+    padding: 10px 0 52px;
+  }
+
+
+  &__container {
+    max-width: 1250px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    @include mixins.font(40px, 400, 60px, 'Arial');
+    color: #0056a3;
+    margin: 35px 0 0 40px;
+    text-transform: uppercase;
+
+
+    @include mixins.respond-to('s') {
+      @include mixins.font(18px, 400, 30px, 'Arial');
+      margin: 0 0 0 20px;
+    }
+
+    @include mixins.respond-to('xs') {
+      @include mixins.font(18px, 400, 30px, 'Arial');
+      margin: 29px 0 0 14px;
+      width: 68%;
+    }
+  }
+
+
+  &__subtitle {
+    @include mixins.font(18px, 400, 30px, 'Arial');
+    color: #6C5F4A;
+    margin: 20px 0 59px 40px;
+
+    @include mixins.respond-to('m') {
+      margin: 19px 0 33px 40px;
+    }
+
+    @include mixins.respond-to('s') {
+      @include mixins.font(16px, 400, 20px, 'Arial');
+      margin: 14px 20px 48px;
+    }
+
+    @include mixins.respond-to('xs') {
+      @include mixins.font(16px, 400, 20px, 'Arial');
+      margin: 18px 14px 8px;
+      width: 68%;
+
+    }
+
+
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+    grid-template-rows: repeat(3, 2fr) repeat(2, 1fr);
+    gap: 0; /* Убираем промежутки */
+    justify-items: end;
+
+    @include mixins.respond-to('m') {
+      grid-template-columns: repeat(6, 1fr);
+      margin-left: 58px;
+    }
+
+    @include mixins.respond-to('s') {
+      display: none;
+    }
+
+    @include mixins.respond-to('xs') {
+      display: none;
+    }
+  }
+
+  &__slider {
+    display: none;
+
+    @include mixins.respond-to('s') {
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+    @include mixins.respond-to('xs') {
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+  }
+
+  &__card {
+    position: relative;
+    overflow: hidden;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+
+    &--highlight {
+      background-color: #00356a;
+      color: #fff;
+    }
+  }
+
+  &__image {
+    max-width: 565px;
+    height: auto;
+
+
+    @include mixins.respond-to('s') {
+      max-width: 260px;
+      height: 294px;
+    }
+    @include mixins.respond-to('xs') {
+      max-width: 260px;
+      height: 294px;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 294px;
+
+  }
+
+  &__text {
+    @include mixins.font(18px, 400, 22px, 'Arial');
+    color: variables.$color-default-white;
+    margin: 0;
+
+    &--large {
+      margin-right: 5px;
+      @include mixins.font(101px, 400, 22px, 'Lato');
+      line-height: 1.4;
+    }
+  }
+
+  /* === Распределение карточек по Grid === */
+
+  &__card:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+
+    @include mixins.respond-to('m') {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__card:nth-child(1) .statistics__content {
+    background: variables.$color-secondary;
+    padding: 16px 40px 16px 10px;
+    text-align: end;
+
+    @include mixins.respond-to('m') {
+      padding: 16px 32px 16px 10px;
+    }
+
+    @include mixins.respond-to('s') {
+      text-align: start;
+    }
+    @include mixins.respond-to('xs') {
+      padding: 16px 76px 16px 10px;
+    }
+
+
+  }
+
+  &__card:nth-child(2) {
+    grid-column: 3 / 3;
+    grid-row: 1 / 2;
+    margin-right: 9px;;
+
+    @include mixins.respond-to('m') {
+      grid-template-columns: repeat(6, 1fr);
+      margin-right: 142px;
+      grid-column: 6;
+    }
+  }
+
+  &__card:nth-child(2) .statistics__content {
+    background: variables.$color-card-accent;
+    padding: 16px 18px 16px 40px;
+
+    @include mixins.respond-to('m') {
+      padding: 16px 18px 16px 50px;
+    }
+
+    @include mixins.respond-to('s') {
+      background: variables.$color-card-accent;
+    }
+  }
+
+  &__card:nth-child(3) {
+    grid-column: 2 / 2;
+    grid-row: 3 / 2;
+    width: 100%;
+    height: 100%;
+    max-height: 294px;
+    max-width: 294px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    @include mixins.respond-to('m') {
+      grid-column: 2/4;
+
+    }
+  }
+
+  &__card:nth-child(4) {
+    grid-column: 3 / 5;
+    grid-row: 2 / 3;
+    margin-right: 40px;
+
+    @include mixins.respond-to('m') {
+      grid-column: 6;
+    }
+
+  }
+
+  &__card:nth-child(5) {
+    grid-column: 1 / 3;
+    grid-row: 3 / 4;
+
+    @include mixins.respond-to('m') {
+      grid-column: 1 / 4;
+    }
+  }
+
+  &__card:nth-child(6) {
+    grid-column: 3 / 3;
+    grid-row: 3 / 4;
+    width: 100%;
+    height: 100%;
+    max-height: 294px;
+    max-width: 294px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-right: 9px;
+    @include mixins.respond-to('m') {
+      grid-column: 4 / 6;
+      margin: 0;
+    }
+  }
+
+  /* === Центрирование контента в карточках 3 и 6 === */
+  &__card:nth-child(3) .statistics__content,
+  &__card:nth-child(6) .statistics__content {
+    width: 100%;
+    height: 100%;
+    background: variables.$color-card-accent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__card:nth-child(6) .statistics__content {
+    padding: 0 21px 31px 21px;
+
+    @include mixins.respond-to('m') {
+      padding: 0 24px 47px 28px;
+    }
+
+  }
+
+  &__card:nth-child(3) .statistics__content {
+    padding: 0 19px 36px 20px;
+
+    @include mixins.respond-to('m') {
+      padding: 0 20px 47px 18px;
+    }
+
+
+  }
+
+  &__card:nth-child(3) .statistics__text,
+  &__card:nth-child(6) .statistics__text {
+    text-align: center;
+  }
+
+  &__card:nth-child(4) .statistics__content {
+    padding: 16px 10px 16px 40px;
+    background: variables.$color-secondary;
+
+    @include mixins.respond-to('m') {
+      padding: 16px 10px 16px 50px;
+    }
+  }
+
+  &__card:nth-child(5) .statistics__content {
+    padding: 16px 40px 16px 0;
+    background: variables.$color-secondary;
+    text-align: end;
+
+    @include mixins.respond-to('m') {
+      padding: 16px 32px 16px 0;
+    }
+  }
+
+}
+
+/* --- Адаптивный текстовый блок --- */
+.statistics__text--block {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  line-height: 1.3;
+  color: variables.$color-default-white;
+  white-space: pre-line;
+}
+
+
+/* --- SWIPER-СТИЛИ --- */
+.statistics__slider {
+  padding-left: 19px;
+  padding-bottom: 30px;
+  padding-right: 41px;
+
+  @include mixins.respond-to('xs') {
+    padding-left: 14px;
+    padding-bottom: 30px;
+    padding-right: 16px;
+  }
+
+
+  .statistics-pagination {
+    max-width: 90px;
+    position: absolute;
+    bottom: -2px;
+    left: 314px;
+    z-index: 10;
+
+    .swiper-pagination-bullet {
+      width: 4px;
+      height: 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      opacity: 0.5;
+      transition: background-color 0.3s, opacity 0.3s;
+
+      &-active {
+        background-color: variables.$color-text-secondary;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.swiper-slide {
+  @include mixins.respond-to('xs') {
+    width: 260px;
+  }
+}
+
+.statistics__particles {
+  width: 260px;
+  height: 416px;
+
+  position: absolute;
+  top: 85px;
+  right: 0;
+
+  svg {
+    width: 260px;
+    height: 416px;
+
+    @include mixins.respond-to('xs') {
+      width: 170px;
+      height: 416px;
+    }
+
+    @include mixins.respond-to('s') {
+      width: 237px;
+      height: 297px;
+    }
+    @include mixins.respond-to('xs') {
+      width: 237px;
+      height: 297px;
+      top: 415px;
+      right: -105px;
+
+    }
+  }
+
+  @include mixins.respond-to('s') {
+    width: 237px;
+    height: 297px;
+    top: 469px;
+    right: -69px;
+  }
+
+  @include mixins.respond-to('xs') {
+    width: 237px;
+    height: 297px;
+    top: 415px;
+    right: -105px;
+  }
+
+  @include mixins.respond-to('m') {
+    width: 170px;
+    height: 416px;
+    top: 35px;
+    right: 0;
+  }
+}
+
+.statistics__particles-two {
+  width: 493px;
+  height: 379px;
+  z-index: 1;
+
+  position: absolute;
+  left: 0;
+  top: 585px;
+
+  svg {
+    width: 292px;
+    height: 358px;
+
+    @include mixins.respond-to('m') {
+      width: 493px;
+      height: 379px;
+    }
+
+    @include mixins.respond-to('s') {
+      width: 493px;
+      height: 367px;
+    }
+    @include mixins.respond-to('xs') {
+      width: 179px;
+      height: 132px;
+    }
+  }
+
+  @include mixins.respond-to('s') {
+    display: none;
+  }
+
+  @include mixins.respond-to('xs') {
+    display: none;
+  }
+
+
+  @include mixins.respond-to('m') {
+    width: 493px;
+    height: 379px;
+    top: 647px;
+    left: -118px;
+  }
+}
+
+
+
+

@@ -1,0 +1,44 @@
+- var advantagesData = [ { id: 1, title: "Уверенность в завтрашнем дне", image: "stability" }, { id: 2, title: "Безопасность на рабочем месте – приоритет №1", image: "safety" }, { id: 3, title: "Стабильная заработная плата", image: "salary" }, { id: 4, title: "Заботимся о здоровье сотрудников", image: "healthcare" }, { id: 5, title: "Предоставление удобной спецодежды и СИЗ для производственного персонала", image: "workwear" }, { id: 6, title: "Обучение: различные программы обучения и профессиональные тренинги", image: "training" }, { id: 7, title: "Возможности для реализации творческого потенциала", image: "creativity" }, { id: 8, title: "Мы - семейная компания и любим проводить время вместе", image: "team" }, { id: 9, title: "Мы - социально ответственная компания и заботимся об окружающих", image: "social" }]
+
+.container
+  section.advantages
+    h2.advantages__title Наши преимущества
+    .advantages__slider.swiper
+      .swiper-wrapper
+        each advantage in advantagesData
+          .swiper-slide
+            .advantages__card
+              picture
+                source(type="image/webp" media="(max-width: 960px)" srcset="../../img/content/advantages/" + advantage.image + "-m.webp")
+                source(type="image/webp" media="(min-width: 961px)" srcset="../../img/content/advantages/" + advantage.image + "-l.webp")
+                img.advantages__image(
+                  src="../../img/content/advantages/" + advantage.image + "-m.png"
+                  srcset="../../img/content/advantages/" + advantage.image + "-m@2x.png 2x"
+                  alt=advantage.title
+                )
+              .advantages__content
+                h3.advantages__card-title= advantage.title
+                .advantages__close
+                  +icon("plus", 15, 15)
+
+      .swiper-button-prev.custom-prev
+      .swiper-button-next.custom-next
+      .custom-pagination
+
+    // Обычная Grid разметка для десктопа
+    .advantages__grid
+      each advantage in advantagesData
+        .advantages__card
+          picture
+            source(type="image/webp" media="(max-width: 960px)" srcset="../../img/content/advantages/" + advantage.image + "-m.webp")
+            source(type="image/webp" media="(min-width: 961px)" srcset="../../img/content/advantages/" + advantage.image + "-l.webp 1x, ../../img/content/advantages/" + advantage.image + "-l@2x.webp 2x")
+            img.advantages__image(
+              src="../../img/content/advantages/" + advantage.image + "-m.png"
+              srcset="../../img/content/advantages/" + advantage.image + "-m@2x.png 2x, ../../img/content/advantages/" + advantage.image + "-m.png 1x"
+              alt=advantage.title
+            )
+
+          .advantages__content
+            h3.advantages__card-title= advantage.title
+            .advantages__close
+              +icon("plus", 15, 15)
